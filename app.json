@@ -1,15 +1,19 @@
 {
   "expo": {
     "name": "travenor",
+    "scheme": "travenor",
     "slug": "travenor",
     "version": "1.0.0",
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/favicon.png",
+      "bundler": "metro"
     },
     "experiments": {
       "tsconfigPaths": true
     },
-    "plugins": [],
+    "plugins": [
+      "expo-router"
+    ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
@@ -25,12 +29,18 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.travenor"
     },
+      "expo": {
+        "plugins": ["expo-router"]
+    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.travenor"
+      "package": "com.anonymous.travenor",
+      "plugins": [
+        "expo-router"
+      ]
     }
   }
 }
