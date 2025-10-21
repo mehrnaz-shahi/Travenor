@@ -1,12 +1,16 @@
-import { Link } from 'expo-router';
-import { View, Text, Button } from 'react-native';
+import { Link, useRouter } from 'expo-router';
+import { View, Text, Button, Image, Pressable } from 'react-native';
 
 export default function Home() {
+  const router = useRouter();
   return (
-    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-      <Text>صفحه اصلی</Text>
-      <Link href="/about">رفتن به درباره ما</Link>
-      <Link href="/profile/10">پروفایل کاربر 10</Link>
+    <View className="flex-1 items-center justify-center">
+      <Text className="mb-4 text-2xl font-bold text-gray-800">صفحه اصلی</Text>
+      <Pressable
+        onPress={() => router.push('/login/tips')}
+        className="mb-2 rounded-lg bg-white px-4 py-2 text-red-500 shadow-md">
+        <Text>شروغ</Text>
+      </Pressable>
     </View>
   );
 }
