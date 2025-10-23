@@ -1,18 +1,18 @@
-import React, { useRef, useEffect, useState } from 'react';
-import { Animated, View, Dimensions, Text, Pressable, Easing, Image } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import React, { useState } from 'react';
+import { View, Dimensions, Text, Pressable, Image } from 'react-native';
 import { Svg, Path } from 'react-native-svg';
 import Button from 'components/Button';
+import { useRouter } from 'expo-router';
 
-export default function Tips() {
+export default function TipsScreen() {
   const { height, width } = Dimensions.get('window');
-  const insets = useSafeAreaInsets();
+  const router = useRouter();
 
   // step control
-  const [stepNumber, setStepNumber] = useState(1);
+  const [stepNumber, setStepNumber] = useState(0);
   const steps = [
     {
-      id: 1,
+      id: 0,
       image: require('@assets/tips/1.jpg'),
       title: (
         <>
@@ -25,7 +25,7 @@ export default function Tips() {
       highlightX: 220,
     },
     {
-      id: 2,
+      id: 1,
       image: require('@assets/tips/2.jpg'),
       title: (
         <>
@@ -38,7 +38,7 @@ export default function Tips() {
       highlightX: 230,
     },
     {
-      id: 3,
+      id: 2,
       image: require('@assets/tips/3.jpg'),
       title: (
         <>
@@ -52,15 +52,19 @@ export default function Tips() {
     },
   ];
 
-  const currentStep = steps[stepNumber - 1];
+  const currentStep = steps[stepNumber];
 
   // next step logic
   const handleNext = () => {
-    setStepNumber((prev) => (prev % steps.length) + 1);
+    if (stepNumber === 2) {
+      router.push('/login/signin');
+      return;
+    }
+    setStepNumber((prev) => prev + 1);
   };
 
   return (
-    <View style={{ flex: 1, paddingBottom: insets.bottom + 20 }}>
+    <View className='flex-1 bg-white pb-10'>
       <Image
         source={currentStep.image}
         style={{
@@ -73,31 +77,31 @@ export default function Tips() {
       />
 
       {/* Content section */}
-      <View className='flex-1 justify-between px-6 mt-10'>
-          <Text
-            className={`font-geometr text-center text-4xl text-[#1B1E28] ${
-              stepNumber === 3 ? 'px-6' : 'px-10'
-            }`}>
-            {currentStep.title}
-          </Text>
+      <View className="mt-10 flex-1 justify-between px-6">
+        <Text
+          className={`text-center font-geometr text-4xl text-[#1B1E28] ${
+            stepNumber === 2 ? 'px-6' : 'px-10'
+          }`}>
+          {currentStep.title}
+        </Text>
 
-          {/* small orange SVG highlight */}
-          <Svg
-            width="90"
-            height="11"
-            viewBox="0 0 90 11"
-            fill="none"
-            style={{
-              position: 'absolute',
-              top: 78,
-              left: currentStep.highlightX,
-            }}>
-            <Path
-              d="M0.842178 10.2928C10.4052 2.39336 53.4585 -7.54222 89.5617 9.79897C69.5956 4.34441 28.7914 0.401048 0.842178 10.2928Z"
-              fill="#FF7029"
-            />
-          </Svg>
-        <Text className="font-gillRegular mt-4 px-2 text-center text-2xl">
+        {/* small orange SVG highlight */}
+        <Svg
+          width="90"
+          height="11"
+          viewBox="0 0 90 11"
+          fill="none"
+          style={{
+            position: 'absolute',
+            top: 78,
+            left: currentStep.highlightX,
+          }}>
+          <Path
+            d="M0.842178 10.2928C10.4052 2.39336 53.4585 -7.54222 89.5617 9.79897C69.5956 4.34441 28.7914 0.401048 0.842178 10.2928Z"
+            fill="#FF7029"
+          />
+        </Svg>
+        <Text className="mt-4 px-2 text-center font-gillRegular text-2xl">
           {currentStep.description}
         </Text>
 
@@ -114,7 +118,7 @@ export default function Tips() {
           ))}
         </View>
 
-        <Button onPress={handleNext}>{stepNumber === 1 ? 'Get Started' : 'Next'}</Button>
+        <Button onPress={handleNext}>{stepNumber === 0 ? 'Get Started' : 'Next'}</Button>
       </View>
     </View>
   );
