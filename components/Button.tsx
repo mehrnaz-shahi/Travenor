@@ -32,13 +32,13 @@ const generateContainerClasses = (variant: Variant, color: Color, disabled: bool
         red: 'bg-error-100 border border-error-300',
         blue: 'bg-primary-500 border border-primary-500',
         white: 'bg-white border border-white',
-        orange: 'bg-secondary-600 border border-secondary-600',
+        orange: 'bg-secondary-500 border border-secondary-600',
       },
       outlined: {
         red: 'bg-white border border-error-300',
         blue: 'bg-white border border-primary-500',
         white: 'bg-transparent border border-white',
-        orange: 'bg-transparent border border-secondary-600',
+        orange: 'bg-transparent border border-secondary-500',
       },
     },
     disabled: {
@@ -69,7 +69,7 @@ const generateTextClasses = (variant: Variant, color: Color, disabled: boolean):
         red: 'text-error-600',
         blue: 'text-white',
         white: 'text-primary-500',
-        orange: 'text-neutral-800',
+        orange: 'text-white',
       },
       outlined: {
         red: 'text-error-600',
