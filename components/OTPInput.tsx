@@ -46,7 +46,7 @@ const OTPInput: React.FC<OTPInputProps> = ({
   };
 
   return (
-    <View style={[containerStyle]} className='flex-row gap-x-4 justify-center'>
+    <View style={[containerStyle]} className="flex-row justify-center gap-x-4">
       {otp.map((digit, index) => (
         <TextInput
           key={index}
@@ -57,10 +57,10 @@ const OTPInput: React.FC<OTPInputProps> = ({
           onChangeText={(text) => handleChange(text, index)}
           onKeyPress={(e) => handleKeyPress(e, index)}
           keyboardType="number-pad"
-          inputMode='numeric'
+          inputMode="numeric"
           maxLength={1}
           style={[styles.input, inputStyle]}
-          className='rounded-lg font-sfRegular bg-neutral-100 text-xl'
+          className="rounded-lg bg-neutral-100 font-sfRegular text-xl"
           autoFocus={autoFocus && index === 0}
           selectionColor="#6BD1F6"
           cursorColor={'#6BD1F6'}

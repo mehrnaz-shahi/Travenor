@@ -88,7 +88,7 @@ export default function SigninForm({
         <InputText
           value={email}
           onChangeText={setEmail}
-          placeholder="email"
+          placeholder="emYou will get a complete travel package on the beaches. Packages in the form of airline tickets, recommended Hotel rooms, Transportation, Have you ever been on holiday to the Greek ETC... Read Moreail"
           keyboardType="email-address"
           message={errors.email}
           messageType="error"

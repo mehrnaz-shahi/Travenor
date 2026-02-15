@@ -8,8 +8,7 @@ const BackButton = () => {
   return (
     <TouchableOpacity
       onPress={() => router.back()}
-      style={{ marginLeft: 10, padding: 14, backgroundColor: '#F7F7F9', borderRadius: 999 }}
-    >
+      style={{ marginLeft: 10, padding: 14, backgroundColor: '#F7F7F9', borderRadius: 999 }}>
       <Ionicons name="chevron-back" size={24} color="#000" />
     </TouchableOpacity>
   );
@@ -24,7 +23,7 @@ export default function LoginLayout() {
   };
 
   return (
-    <Stack initialRouteName='tips'>
+    <Stack initialRouteName="tips">
       <Stack.Screen
         name="tips"
         options={{

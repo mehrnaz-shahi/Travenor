@@ -32,16 +32,14 @@ export default function InputText({
   return (
     <View>
       {label && (
-        <View className="flex-row items-center mb-1">
-          <Text className="text-[15px] font-sfMedium text-neutral-800">
-            {label}
-          </Text>
-          {required && <Text className="text-red-500 ml-1">*</Text>}
+        <View className="mb-1 flex-row items-center">
+          <Text className="font-sfMedium text-[15px] text-neutral-800">{label}</Text>
+          {required && <Text className="ml-1 text-red-500">*</Text>}
         </View>
       )}
 
       {/* Input container */}
-      <View className="flex-row items-center bg-[#F7F7F9] rounded-[14px] px-4 py-3">
+      <View className="flex-row items-center rounded-[14px] bg-[#F7F7F9] px-4 py-3">
         <TextInput
           value={value}
           onChangeText={onChangeText}
@@ -52,14 +50,13 @@ export default function InputText({
           placeholderTextColor="#A0A0A0"
           cursorColor="#24BAEC"
           selectionColor="#24BAEC"
-          className="flex-1 text-[16px] text-neutral-800 font-sfMedium"
+          className="flex-1 font-sfMedium text-[16px] text-neutral-800"
         />
 
         {secureTextEntry && (
           <TouchableOpacity
             onPress={() => setIsPasswordVisible(!isPasswordVisible)}
-            className="ml-2"
-          >
+            className="ml-2">
             <Ionicons
               name={isPasswordVisible ? 'eye-outline' : 'eye-off-outline'}
               size={20}
@@ -70,13 +67,12 @@ export default function InputText({
       </View>
 
       {/* Message */}
-        <Text
-          className={`mt-1 ml-2 text-sm font-sfMedium ${
-            messageType === 'error' ? 'text-error-600' : 'text-neutral-500'
-          }`}
-        >
-          {message}
-        </Text>
+      <Text
+        className={`ml-2 mt-1 font-sfMedium text-sm ${
+          messageType === 'error' ? 'text-error-600' : 'text-neutral-500'
+        }`}>
+        {message}
+      </Text>
     </View>
   );
 }

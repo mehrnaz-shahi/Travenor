@@ -13,7 +13,7 @@ type LocationCardProps = {
 export default function LocationCard({ name, image, location, rate }: LocationCardProps) {
   return (
     <View
-      className="rounded-3xl p-4 pb-6"
+      className="rounded-3xl p-4 pb-6 border border-neutral-100"
       style={{ boxShadow: '0 6px 16px 0 rgba(180, 188, 201, 0.12)' }}>
       <Image source={image} style={{ width: 300, height: 300, borderRadius: 20 }} />
       <View className="mt-2 flex-row items-center justify-between">
@@ -38,7 +38,7 @@ export default function LocationCard({ name, image, location, rate }: LocationCa
           <View className="absolute right-4 top-0">
             <Avatar3 />
           </View>
-          <Text className="absolute right-0 top-0 rounded-full bg-primary-50 p-1 text-center font-interLight text-xs text-neutral-800 w-7 h-7">
+          <Text className="absolute right-0 top-0 h-7 w-7 rounded-full bg-primary-50 p-1 text-center font-interLight text-xs text-neutral-800">
             +50
           </Text>
         </View>

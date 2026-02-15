@@ -29,18 +29,12 @@
       "supportsTablet": true,
       "bundleIdentifier": "com.anonymous.travenor"
     },
-      "expo": {
-        "plugins": ["expo-router"]
-    },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.anonymous.travenor",
-      "plugins": [
-        "expo-router"
-      ]
+      "package": "com.anonymous.travenor"
     }
   }
 }

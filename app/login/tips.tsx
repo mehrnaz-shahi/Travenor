@@ -64,7 +64,7 @@ export default function TipsScreen() {
   };
 
   return (
-    <View className='flex-1 bg-white pb-10'>
+    <View className="flex-1 bg-white pb-10">
       <Image
         source={currentStep.image}
         style={{

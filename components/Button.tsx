@@ -1,5 +1,13 @@
 import React from 'react';
-import { Text, GestureResponderEvent, Pressable, StyleProp, ViewStyle, PressableStateCallbackType, TextStyle } from 'react-native';
+import {
+  Text,
+  GestureResponderEvent,
+  Pressable,
+  StyleProp,
+  ViewStyle,
+  PressableStateCallbackType,
+  TextStyle,
+} from 'react-native';
 import type { ReactNode } from 'react';
 
 type Variant = 'contained' | 'outlined';
@@ -15,12 +23,15 @@ interface ButtonProps {
   children: ReactNode;
   Icon?: React.ReactNode;
   onPress?: (event: GestureResponderEvent) => void;
-  buttonStyles?: StyleProp<ViewStyle> | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
+  buttonStyles?:
+    | StyleProp<ViewStyle>
+    | ((state: PressableStateCallbackType) => StyleProp<ViewStyle>);
   textStyle?: StyleProp<TextStyle>;
 }
 
 // Base button style
-const baseContainer = 'py-3 px-3 rounded-2xl transition-all flex flex-row items-center justify-center gap-3';
+const baseContainer =
+  'py-3 px-3 rounded-2xl transition-all flex flex-row items-center justify-center gap-3';
 const baseText = 'font-sfMedium text-xl';
 
 const generateContainerClasses = (variant: Variant, color: Color, disabled: boolean): string => {
@@ -110,10 +121,16 @@ const Button: React.FC<ButtonProps> = ({
   textStyle,
 }) => {
   return (
-    <Pressable disabled={disabled} onPress={onPress} className={`${generateContainerClasses(variant, color, disabled)} ${className}`} style={buttonStyles}>
+    <Pressable
+      disabled={disabled}
+      onPress={onPress}
+      className={`${generateContainerClasses(variant, color, disabled)} ${className}`}
+      style={buttonStyles}>
       {Icon}
       {typeof children === 'string' ? (
-        <Text className={`${generateTextClasses(variant, color, disabled)} ${textClassName}`} style={textStyle}>
+        <Text
+          className={`${generateTextClasses(variant, color, disabled)} ${textClassName}`}
+          style={textStyle}>
           {children}
         </Text>
       ) : (
