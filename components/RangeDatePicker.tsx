@@ -24,7 +24,7 @@ type Props = {
   onConfirm: (start: Moment | undefined, end: Moment | undefined) => void;
 };
 
-export default function RangeDatePickerRN(props: Props) {
+export default function RangeDatePicker(props: Props) {
   const { initialStartDate, initialEndDate, onChange, year, onClose, onConfirm, errorMessage } =
     props;
 
@@ -274,21 +274,27 @@ export default function RangeDatePickerRN(props: Props) {
       </View>
 
       {/* Selected Range Display Panel */}
-      <View className="m-5 flex-row rounded-2xl border border-blue-100 bg-blue-50 p-4">
+      <View className="m-5 flex-row rounded-2xl border border-blue-100 bg-blue-50">
         <Pressable
           onPress={() => setPointer('start')}
-          className="flex-1 border-r border-blue-200 pr-4">
-          <Text className="text-xs font-semibold uppercase text-blue-600">Start Date</Text>
-          <Text className="mt-1 text-sm font-bold text-gray-800">
+          className="relative flex-1 border-r border-blue-200 p-4">
+          <Text className="text-xs font-semibold uppercase text-blue-600 text-center">Start Date</Text>
+          <Text className="mt-1 text-sm font-bold text-gray-800 text-center">
             {startDate ? startDate.format('ddd, MMM D') : '—'}
           </Text>
+          {pointer === 'start' && (
+            <View className={`absolute bottom-0 right-4 h-1 w-full rounded-md bg-blue-400`} />
+          )}
         </Pressable>
 
-        <Pressable onPress={() => setPointer('end')} className="flex-1 pl-4">
-          <Text className="text-xs font-semibold uppercase text-blue-600">End Date</Text>
-          <Text className="mt-1 text-sm font-bold text-gray-800">
+        <Pressable onPress={() => setPointer('end')} className="flex-1 p-4">
+          <Text className="text-xs font-semibold uppercase text-blue-600 text-center">End Date</Text>
+          <Text className="mt-1 text-sm font-bold text-gray-800 text-center">
             {endDate ? endDate.format('ddd, MMM D') : '—'}
           </Text>
+          {pointer === 'end' && (
+            <View className={`absolute bottom-0 right-4 h-1 w-full rounded-md bg-blue-400`} />
+          )}
         </Pressable>
       </View>
       {/* Sticky Weekdays Header Section */}
@@ -319,7 +325,7 @@ export default function RangeDatePickerRN(props: Props) {
       </View>
 
       {/* Action Buttons Block */}
-      <View className="border-t border-gray-100 bg-white px-5 pb-8 pt-4">
+      <View className="border-t border-gray-100 bg-white px-5 pt-4">
         {errorMessage && (
           <View className="mb-4 flex-row items-center gap-2 rounded-xl bg-red-50 p-3">
             <Text className="text-sm font-medium text-red-600">{errorMessage}</Text>
